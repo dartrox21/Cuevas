@@ -24,6 +24,7 @@ public:
     bool leer(string nombre);
     void mostrar();
     void setPared(int fila, int columna);
+    void encontrarRuta();
 };
 
 #endif // CUEVA_H

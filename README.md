@@ -22,3 +22,9 @@ El programa implementará Registros de Longitud Fija, los mapas no deberán exce
 Los archivos de los mapas deberán alamacenar las filas y columnas utiles en el mapa(rango) el cual deberá ser almacenado también en el archivo.
 
 LEl programa deberá permitir crear nuevos mapas y mostrar en pantalla el mapa seleccionado.
+
+
+CREAR CAMINOS
+
+Implementar  la simulación de un robot que recorrerá desde la entrada hasta que encuentra la Salida
+ del laberinto y mostrará en pantalla la ruta si es que existe

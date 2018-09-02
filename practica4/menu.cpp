@@ -9,14 +9,17 @@ Menu::Menu()
         cout << "\n\tMapa" << endl;
         cout << "1.- Crear " << endl
              << "2.- Mostrar " << endl
-             << "3.- Salir " << endl
+             << "3.- Encontrar ruta" << endl
+             << "4.- Salir " << endl
              << ">>> ";
         getline(cin, op);
         if (op == "1")
             crearMapa();
         else if(op == "2")
             mostrarMapa();
-    }while(op != "3");
+        else if(op == "3")
+            encontrarRuta();
+    }while(op != "4");
 }
 
 void Menu::crearMapa()
@@ -119,4 +122,21 @@ void Menu::pared()
     cout << "Ingresa Columna: ";
     cin >> columna;
     cueva.setPared(fila, columna);
+}
+
+void Menu::encontrarRuta()
+{
+    system("cls");
+    string nombre;
+    cout << "\tMostrar Mapa" << endl;
+    cout << "Ingrese nombre del mapa: ";
+    getline(cin, nombre);
+    if(cueva.leer(nombre)){
+        cueva.encontrarRuta();
+        cueva.mostrar();
+    }
+    else
+        cout << "Error al mostrar cueva: " << nombre << ".txt" << endl;
+
+    system("pause");
 }

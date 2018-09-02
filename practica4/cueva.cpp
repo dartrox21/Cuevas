@@ -155,3 +155,107 @@ void Cueva::setPared(int fila, int columna)
     system("pause");
     system("cls");
 }
+
+int menor(int a, int b, int c, int d){
+    if(a < 0)
+        a = 1000;
+    if(b < 0)
+        b = 1000;
+    if(c < 0)
+        c = 1000;
+    if(d < 0)
+        d = 1000;
+    int minimo = std::min(a,std::min(b,std::min(c,d)));
+    if(minimo == a)
+        return 1;
+    else if(minimo == b)
+        return 2;
+    else if(minimo == c)
+        return 3;
+    else if(minimo == d)
+        return 4;
+    return 0;
+}
+void Cueva::encontrarRuta(){
+    bool continuar = true;
+    int filaTemp;
+    int columnaTemp;
+    for (int x = 0; x < fila; x++) {
+        for (int y = 0; y < columna; y++) {
+            if(matriz[x][y] == -3){
+                filaTemp = x;
+                columnaTemp = y;
+                break;
+            }
+        }
+    }
+    //Las primeras 4 condiciones son para sacar el lugar de una de las orillas
+    if(columnaTemp-1 > 0){
+        if (matriz[filaTemp][columnaTemp-1] >= 0) {
+            matriz[filaTemp][columnaTemp-1] += 1;
+            columnaTemp --;
+        }
+        else if(matriz[filaTemp][columnaTemp-1] == EXIT){
+            continuar = false;
+        }
+    }
+    if(columnaTemp+1 < this->columna){
+        if(matriz[filaTemp][columnaTemp+1] >=0){
+            matriz[filaTemp][columnaTemp+1] += 1;
+            columnaTemp ++;
+        }
+        else if(matriz[filaTemp][columnaTemp+1] == EXIT){
+            continuar = false;
+        }
+    }
+    if(filaTemp-1 > 0){
+        if(matriz[filaTemp-1][columnaTemp] >=0){
+            matriz[filaTemp-1][columnaTemp] += 1;
+            filaTemp --;
+        }
+        else if(matriz[filaTemp-1][columnaTemp] == EXIT){
+            continuar = false;
+        }
+    }
+    if(filaTemp+1 < this->fila){
+        if(matriz[filaTemp+1][columnaTemp] >=0){
+            matriz[filaTemp+1][columnaTemp] += 1;
+            filaTemp ++;
+        }
+        else if(matriz[filaTemp+1][columnaTemp] == EXIT){
+            continuar = false;
+        }
+    }
+
+    int getMenor;
+    while(continuar == true){
+        if((matriz[filaTemp][columnaTemp-1] == EXIT)||
+                (matriz[filaTemp][columnaTemp+1] == EXIT) ||
+                (matriz[filaTemp-1][columnaTemp] == EXIT) ||
+                (matriz[filaTemp+1][columnaTemp] == EXIT)){
+            continuar = false;
+            break;
+        }
+
+        getMenor = menor(matriz[filaTemp][columnaTemp-1],
+                matriz[filaTemp][columnaTemp+1],
+                matriz[filaTemp-1][columnaTemp],
+                 matriz[filaTemp+1][columnaTemp]);
+        if (getMenor == 1) {
+            matriz[filaTemp][columnaTemp-1] += 1;
+            columnaTemp--;
+        }
+        else if (getMenor == 2) {
+            matriz[filaTemp][columnaTemp+1] += 1;
+            columnaTemp++;
+        }
+        else if(getMenor == 3){
+            matriz[filaTemp-1][columnaTemp] += 1;
+            filaTemp--;
+        }
+        else if (getMenor == 4) {
+            matriz[filaTemp+1][columnaTemp] += 1;
+            filaTemp++;
+        }
+    }
+}

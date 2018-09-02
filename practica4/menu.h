@@ -17,6 +17,7 @@ public:
     void entradas();
     void salidas();
     void pared();
+    void encontrarRuta();
 };
 
 #endif // MENU_H
