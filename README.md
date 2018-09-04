@@ -32,4 +32,4 @@ Implementar  la simulación de un robot que recorrerá desde la entrada hasta qu
 
  AÑADIENDO COLOR A LA RUTA ENCONTRADA Y GUARDANDO RUTA ENCONTRADA
 
- agregar un color diferente a la ruta encontrada y guardarla en un archivo 
+ agregar un color diferente a la ruta encontrada y guardarla en un archivo
