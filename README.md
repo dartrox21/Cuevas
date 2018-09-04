@@ -28,3 +28,8 @@ CREAR CAMINOS
 
 Implementar  la simulación de un robot que recorrerá desde la entrada hasta que encuentra la Salida
  del laberinto y mostrará en pantalla la ruta si es que existe
+
+
+ AÑADIENDO COLOR A LA RUTA ENCONTRADA Y GUARDANDO RUTA ENCONTRADA
+
+ agregar un color diferente a la ruta encontrada y guardarla en un archivo 

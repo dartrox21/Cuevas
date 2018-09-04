@@ -134,9 +134,12 @@ void Menu::encontrarRuta()
     if(cueva.leer(nombre)){
         cueva.encontrarRuta();
         cueva.mostrar();
+        cout << "\n\nGUARDAR\nIngrese nombre de la solucion: ";
+        getline(cin, nombre);
+        cueva.guardar(nombre);
     }
     else
         cout << "Error al mostrar cueva: " << nombre << ".txt" << endl;
-
+    cout << endl;
     system("pause");
 }

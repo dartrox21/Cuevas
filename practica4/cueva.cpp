@@ -102,6 +102,14 @@ bool Cueva::leer(string nombre)
 
 void Cueva::mostrar()
 {
+    HANDLE h = GetStdHandle ( STD_OUTPUT_HANDLE );
+    WORD wOldColorAttrs;
+    CONSOLE_SCREEN_BUFFER_INFO csbiInfo;
+    //Getting the las color used, in this case white
+    GetConsoleScreenBufferInfo(h, &csbiInfo);
+    wOldColorAttrs = csbiInfo.wAttributes;
+
+
     cout << "   ";
     for (int x = 0; x < this->columna; x++) {
         cout << x << " ";
@@ -121,8 +129,14 @@ void Cueva::mostrar()
                 cout << "S";
             else if(this->matriz[x][y] == ENTRANCE)
                 cout << "E";
-            else if(this->matriz[x][y] > 0 )
+            else if(this->matriz[x][y] > 0 ){
+                SetConsoleTextAttribute ( h, FOREGROUND_BLUE | FOREGROUND_INTENSITY );
                 cout << matriz[x][y];
+                //use the code below if you want to change the numbers for a symbol
+//                char symbol = 254;
+//                cout << symbol;
+            }
+            SetConsoleTextAttribute ( h, wOldColorAttrs);
             cout << " ";
         }
         cout << endl;
@@ -189,7 +203,7 @@ void Cueva::encontrarRuta(){
             }
         }
     }
-    //Las primeras 4 condiciones son para sacar el lugar de una de las orillas
+    //First 4 conditions are to take out the actual position from a shore
     if(columnaTemp-1 > 0){
         if (matriz[filaTemp][columnaTemp-1] >= 0) {
             matriz[filaTemp][columnaTemp-1] += 1;
